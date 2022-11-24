@@ -1,0 +1,1 @@
+export type IconNames = 'carretDown' | 'star' | 'magnifyingGlass' | 'user';

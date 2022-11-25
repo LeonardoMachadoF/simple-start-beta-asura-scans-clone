@@ -1,1 +1,1 @@
-export type IconNames = 'carretDown' | 'star' | 'magnifyingGlass' | 'user';
+export type IconNames = 'carretDown' | 'star' | 'magnifyingGlass' | 'user' | 'carretLeft';

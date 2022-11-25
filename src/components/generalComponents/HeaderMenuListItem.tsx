@@ -13,7 +13,7 @@ interface Props {
 
 export const HeaderMenuListItem = ({ title, iconName, iconPosition, iconWeight, iconColor }: Props) => {
     return (
-        <li className={`flex items-center hover:text-hoverText-200 transition-colors ${iconName && 'gap-1'}`}>
+        <li className={`flex text-sm items-center hover:text-hoverText-200 transition-colors ${iconName && 'gap-1'}`}>
             {iconName && iconPosition === 'left' &&
                 <Icon
                     name={iconName}

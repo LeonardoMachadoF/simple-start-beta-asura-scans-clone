@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { DragEvent, useEffect, useState } from "react"
 import { Icon } from "./icons/Icon"
 
 interface Props {
@@ -8,24 +8,38 @@ interface Props {
 }
 
 export const PopularSeriesItem = ({ activePopular, setActivePopular }: Props) => {
-    let timeout: NodeJS.Timeout;
-    useEffect(() => {
-        timeout = setTimeout(() => {
-            handleActivePopularChange();
-        }, 2000)
-    }, [activePopular])
+    let screenX: number[] = [];
 
-    const handleActivePopularChange = () => {
-        clearTimeout(timeout);
-        if (activePopular < 5) {
-            setActivePopular(activePopular + 1);
+    const handleActivePopularChange = (reverse?: boolean) => {
+        if (reverse) {
+            if (activePopular > 1) {
+                setActivePopular(activePopular - 1);
+            } else {
+                setActivePopular(5);
+            }
         } else {
-            setActivePopular(1);
+            if (activePopular < 5) {
+                setActivePopular(activePopular + 1);
+            } else {
+                setActivePopular(1);
+            }
         }
     }
 
+    const handleDragEnd = (e: DragEvent<HTMLDivElement>) => {
+        screenX.push(e.pageX)
+        screenX[1] > screenX[0] ? handleActivePopularChange(true) : handleActivePopularChange();
+        screenX = [];
+    }
+
+    const handleDragStart = (e: DragEvent<HTMLDivElement>) => {
+        screenX = [];
+        screenX.push(e.pageX)
+    }
+
     return (
-        <article className='h-[600px] min-w-[100%] overflow-hidden relative rounded-t-2xl'>
+        <article className='min-w-[100%] overflow-hidden relative rounded-t-2xl'>
+            <div onMouseDown={handleDragStart} onMouseUp={handleDragEnd} className='absolute top-0 left-0 right-0 bottom-[40%] z-50 cursor-grab'></div>
             <div>
                 <div className="absolute bottom-0 z-10">
                     <h2 className=" text-white text-3xl ">
@@ -62,7 +76,7 @@ export const PopularSeriesItem = ({ activePopular, setActivePopular }: Props) =>
                                 <div className="w-3 h-3 rounded-full" style={{ background: activePopular === 5 ? 'linear-gradient(180deg,#7334ae,#3e0251)' : 'gray' }}></div>
                             </div>
                             <div>
-                                <div onClick={handleActivePopularChange} className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(180deg,#7334ae,#3e0251)' }}>
+                                <div onClick={() => handleActivePopularChange()} className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(180deg,#7334ae,#3e0251)' }}>
                                     <Icon name="carretLeft" size={20} color='#FFF' />
                                 </div>
                             </div>

@@ -9,7 +9,7 @@ export default function Home() {
         <div className=''>
             <Header />
             <Carrousel />
-            <main className="flex flex-col gap-16 max-w-7xl m-auto mt-16">
+            <main className="flex flex-col gap-16 max-w-7xl m-auto mt-16 md:px-2">
                 <PopularSeries />
                 <LatestsUpdates />
             </main>

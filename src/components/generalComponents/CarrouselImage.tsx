@@ -12,7 +12,7 @@ export const CarrouselImage = ({ src }: Props) => {
         <img
             src={imageOptions[src]}
             alt=""
-            width="46%"
+            className="w-[46%] xl:w-[50%]"
         />
     )
 }

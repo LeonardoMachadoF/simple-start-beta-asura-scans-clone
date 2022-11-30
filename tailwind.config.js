@@ -26,7 +26,15 @@ module.exports = {
             },
             fontFamily: {
                 sans: 'Roboto'
-            }
+            },
+
+            screens: {
+                'sm': { 'max': '400px' },
+                '2xl': { 'max': '1535px' },
+                'xl': { 'max': '1200px' },
+                'lg': { 'max': '1023px' },
+                'md': { 'max': '767px' },
+            },
         },
     },
     plugins: [],

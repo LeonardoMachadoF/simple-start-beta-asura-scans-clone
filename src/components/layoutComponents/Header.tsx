@@ -1,5 +1,6 @@
 import { Icon } from "../generalComponents/icons/Icon";
 import { HeaderMenuListItem } from "../generalComponents/HeaderMenuListItem";
+import { Hamburger } from "phosphor-react";
 
 export const Header = () => {
     return (
@@ -11,7 +12,7 @@ export const Header = () => {
                         alt=""
                         className="w-12"
                     />
-                    <ul className="flex gap-5 font-bold text-white">
+                    <ul className="flex gap-5 font-bold text-white md:hidden">
                         <HeaderMenuListItem title="Home" />
                         <HeaderMenuListItem title="Bookmarks" />
                         <HeaderMenuListItem
@@ -28,9 +29,12 @@ export const Header = () => {
                         />
                     </ul>
                 </nav>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 md:hidden">
                     <Icon name="magnifyingGlass" size={28} />
                     <Icon name="user" size={28} weight='bold' color="#fff" />
+                </div>
+                <div className="md:block hidden" >
+                    <Hamburger size={28} className="h-full" />
                 </div>
             </div>
         </header>

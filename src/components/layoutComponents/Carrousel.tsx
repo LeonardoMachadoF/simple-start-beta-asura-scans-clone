@@ -17,7 +17,7 @@ export const Carrousel = () => {
     }, [left])
 
     return (
-        <div className="relative h-[480px]">
+        <div className="relative h-[480px]  md:hidden">
             <Image
                 src="https://beta.asurascans.com/img/banner-bkg.png"
                 alt=""
